@@ -1,0 +1,33 @@
+<td-layout-nav logo="assets:covalent">
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>Demo</span>
+    <span flex></span>
+    <a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>
+    <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><md-icon svgIcon="assets:github"></md-icon></a>
+  </div>
+  <div layout-gt-md="row" layout-margin>
+    <div flex-gt-xs="50">
+      <md-card>
+        <md-card-title>Demos</md-card-title>
+        <md-divider></md-divider>
+        <md-card-content>
+          <td-data-table
+            [data]="data$ | async"
+            [columns]="columns"
+            [selectable]="true"
+            [multiple]="false"
+            [sortable]="false"
+            (rowSelect)="selectEvent($event)">
+          </td-data-table>
+        </md-card-content>
+        <md-divider></md-divider>
+        <md-card-actions>
+          <button md-raised-button color="primary" (click)="addNew()">Add New Demo</button>
+        </md-card-actions>
+    </md-card>
+    </div>
+    <div flex-gt-xs="50">
+      <app-demo [selDemo]="selectedDemo" [addOrUpdate]="add"></app-demo>
+    </div>
+  </div>
+</td-layout-nav>
